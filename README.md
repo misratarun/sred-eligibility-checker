@@ -127,7 +127,7 @@ through an async job queue (e.g., Celery + Redis) rather than blocking the reque
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/sred-eligibility-checker.git
+git clone https://github.com/misratarun/sred-eligibility-checker.git
 cd sred-eligibility-checker
 ```
 
