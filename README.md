@@ -92,7 +92,7 @@ two chunks and losing its qualifying language. CRA SR&ED documents use a hierarc
 numbered structure (e.g., "2.1.1 Technological Uncertainty"), so larger chunks reduce
 the risk of fragmenting a single policy point across multiple retrieved passages.
 
-### Retrieval Approach — Why MMR over Similarity Search
+### Retrieval Approach: Why MMR over Similarity Search
 
 Maximum Marginal Relevance (MMR) penalizes redundancy alongside similarity, which is
 critical for regulatory documents where multiple chunks from the same CRA section often
