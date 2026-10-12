@@ -254,6 +254,12 @@ This project is a portfolio artifact built to demonstrate:
 
 ---
 
+## No-code version
+
+There is also a no-code port of this app built in Gumloop. Same four CRA PDFs, same five test queries, same six-section output. It took about 7 minutes of agent run time end-to-end and skipped the ingestion, vector store, retrieval chain, and UI code. In exchange it gives up the auditable retrieval trace and drifts on citation page numbers. The per-query results, a side-by-side comparison against this app, and notes on what the trade-off looks like in practice are in [`gumloop-version/README.md`](gumloop-version/README.md).
+
+---
+
 ## License
 
 MIT

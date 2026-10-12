@@ -1,0 +1,29 @@
+Summary
+I've completed a detailed SR&ED assessment of your DBSCAN adaptation project, grounded in the official CRA SR&ED guidelines. Here are the key findings:
+
+Classification: BORDERLINE — LIKELY ELIGIBLE WITH CONDITIONS
+Your project has genuine technical novelty and uncertainty, but sits at the edge between operational engineering and legitimate SR&ED. The verdict depends on what documentation you can provide.
+
+The Three Criteria:
+Technological Uncertainty: ✅ LIKELY MET
+You faced a real gap: DBSCAN + standard distance metrics don't work on high-dimensional, non-Euclidean event sequences. Your custom metric design was non-obvious. The explicit uncertainty you stated—"we don't know if this generalizes beyond our traffic data"—is textbook technological uncertainty. Risk: If the metric is overfitted to your specific traffic patterns, the CRA will argue you solved a business problem, not advanced general knowledge.
+Systematic Investigation: ⚠️ PARTIALLY MET (needs detail)
+Four variants over two months is structured work, but the CRA needs evidence of:
+Documented hypotheses for each variant (not just "we tried them")
+Rigorous evaluation (train/test splits, consistent metrics, significance testing)
+Analysis linking each result to the next hypothesis
+Without this, it looks like algorithm tuning, not research.
+Technological Advancement: ❓ UNCERTAIN (scope-dependent)
+This is the critical question: Did you advance general knowledge about distance metrics for event sequences, or just solve your company's traffic anomaly problem? If another team at a different company could learn from your findings, it's SR&ED. If it's specific to your data, it's not.
+The Critical Question
+Your statement—"works for our dataset but uncertain whether it generalizes"—is a red flag. If you couldn't establish generalization, the CRA will argue you didn't advance general knowledge.
+
+Highest-Impact Action (STEP 1)
+Test your metric on different datasets (synthetic event sequences, cloud logs, security events, or your own historical data from different periods). If you can show:
+
+Where it works well
+Where it breaks down
+What principles about event-stream clustering you discovered
+...that becomes your strongest evidence of SR&ED eligibility.
+
+The full assessment includes 5 critical questions you should answer and a 4-step strengthening plan. Review your experiment logs, hypotheses, and evaluation methodology against those questions to determine final eligibility.
