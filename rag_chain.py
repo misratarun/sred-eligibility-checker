@@ -10,8 +10,8 @@ from dotenv import load_dotenv
 from langchain.prompts import ChatPromptTemplate
 from langchain_anthropic import ChatAnthropic
 from langchain_chroma import Chroma
-from langchain_community.embeddings import SentenceTransformerEmbeddings
 from langchain_core.output_parsers import StrOutputParser
+from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_core.runnables import RunnablePassthrough
 
 load_dotenv()
@@ -74,17 +74,27 @@ def _format_docs(docs) -> str:
     return "\n\n---\n\n".join(parts)
 
 
+_VECTORSTORE_CACHE: Chroma | None = None
+
+
 def load_vectorstore() -> Chroma:
+    global _VECTORSTORE_CACHE
+    if _VECTORSTORE_CACHE is not None:
+        return _VECTORSTORE_CACHE
     if not Path(CHROMA_DIR).exists():
         raise FileNotFoundError(
             f"ChromaDB not found at {CHROMA_DIR}/. Run: python ingest.py"
         )
-    embeddings = SentenceTransformerEmbeddings(model_name=EMBED_MODEL)
-    return Chroma(
+    embeddings = HuggingFaceEmbeddings(
+        model_name=EMBED_MODEL,
+        model_kwargs={"device": "cpu"},
+    )
+    _VECTORSTORE_CACHE = Chroma(
         collection_name=COLLECTION_NAME,
         embedding_function=embeddings,
         persist_directory=CHROMA_DIR,
     )
+    return _VECTORSTORE_CACHE
 
 
 def build_chain(vectorstore: Chroma):
